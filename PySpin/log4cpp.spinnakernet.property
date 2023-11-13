@@ -1,0 +1,18 @@
+# Property Configurator for SpinnakerNET wrapper
+
+# Root category logging priority and appender is used if individual categories are not configured
+# Note: Multiple appenders can be attached to the same category
+log4cpp.rootCategory=ERROR, SpinnakerNETFileAppender
+log4cpp.category.SpinnakerNET=ERROR, SpinnakerNETFileAppender
+
+log4cpp.appender.SpinnakerNETFileAppender=RollingFileAppender
+log4cpp.appender.SpinnakerNETFileAppender.fileName=$(ALLUSERSPROFILE)\Spinnaker\Shared\Logs\SpinnakerNET.log
+log4cpp.appender.SpinnakerNETFileAppender.append=true
+log4cpp.appender.SpinnakerNETFileAppender.maxFileSize=1000000
+log4cpp.appender.SpinnakerNETFileAppender.maxBackupIndex=5
+log4cpp.appender.SpinnakerNETFileAppender.layout=PatternLayout
+log4cpp.appender.SpinnakerNETFileAppender.layout.ConversionPattern=[%p] %d [%t] %m%n
+
+# Compression applies when maxFileSize is reached and log will be split up depending on maxBackupIndex specified
+# Note: Compression takes some time depending on the maxFileSize specified so use with caution for time sensitive applications
+log4cpp.appender.SpinnakerNETFileAppender.compression=false

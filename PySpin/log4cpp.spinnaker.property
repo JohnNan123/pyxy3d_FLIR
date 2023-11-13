@@ -1,0 +1,23 @@
+# Property Configurator for Spinnaker library
+
+# Root category logging priority and appender is used if individual categories are not configured
+# Note: Multiple appenders can be attached to the same category
+log4cpp.rootCategory=ERROR, SpinnakerFileAppender
+log4cpp.category.SpinnakerConsole=FATAL, SpinnakerConsoleAppender
+log4cpp.category.Spinnaker=ERROR, SpinnakerFileAppender
+
+log4cpp.appender.SpinnakerConsoleAppender=ConsoleAppender
+log4cpp.appender.SpinnakerConsoleAppender.layout=PatternLayout
+log4cpp.appender.SpinnakerConsoleAppender.layout.ConversionPattern=[%p %c] %d [%t] %m%n
+
+log4cpp.appender.SpinnakerFileAppender=RollingFileAppender
+log4cpp.appender.SpinnakerFileAppender.fileName=$(ALLUSERSPROFILE)\Spinnaker\Shared\Logs\Spinnaker.log
+log4cpp.appender.SpinnakerFileAppender.append=true
+log4cpp.appender.SpinnakerFileAppender.maxFileSize=1000000
+log4cpp.appender.SpinnakerFileAppender.maxBackupIndex=5
+log4cpp.appender.SpinnakerFileAppender.layout=PatternLayout
+log4cpp.appender.SpinnakerFileAppender.layout.ConversionPattern=[%p %c] %d [%t] %m%n
+
+# Compression applies when maxFileSize is reached and log will be split up depending on maxBackupIndex specified
+# Note: Compression takes some time depending on the maxFileSize specified so use with caution for time sensitive applications
+log4cpp.appender.SpinnakerFileAppender.compression=false

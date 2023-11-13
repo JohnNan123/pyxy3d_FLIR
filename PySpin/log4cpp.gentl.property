@@ -1,0 +1,18 @@
+# Property Configurator for FLIR GenTL producer
+
+# Root category logging priority and appender is used if individual categories are not configured
+# Note: Multiple appenders can be attached to the same category
+log4cpp.rootCategory=ERROR, GenTLFileAppender
+log4cpp.category.GenTL=ERROR, GenTLFileAppender
+
+log4cpp.appender.GenTLFileAppender=RollingFileAppender
+log4cpp.appender.GenTLFileAppender.fileName=$(ALLUSERSPROFILE)\Spinnaker\Shared\Logs\GenTL.log
+log4cpp.appender.GenTLFileAppender.append=true
+log4cpp.appender.GenTLFileAppender.maxFileSize=1000000
+log4cpp.appender.GenTLFileAppender.maxBackupIndex=5
+log4cpp.appender.GenTLFileAppender.layout=PatternLayout
+log4cpp.appender.GenTLFileAppender.layout.ConversionPattern=[%p] %d [%t] %m%n
+
+# Compression applies when maxFileSize is reached and log will be split up depending on maxBackupIndex specified
+# Note: Compression takes some time depending on the maxFileSize specified so use with caution for time sensitive applications
+log4cpp.appender.GenTLFileAppender.compression=false
