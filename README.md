@@ -1,0 +1,1 @@
+this is a git clone as a copy for the pyxy3d for FLIR camera system
